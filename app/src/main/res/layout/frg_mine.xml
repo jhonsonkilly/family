@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:layout_height="match_parent">
 
-</LinearLayout>
+
+
+
+        <widget.LoginView
+            android:visibility="gone"
+            android:id="@+id/login_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <widget.MineView
+            android:id="@+id/mine_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+
+
+</FrameLayout>

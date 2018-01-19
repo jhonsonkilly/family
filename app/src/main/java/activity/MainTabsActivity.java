@@ -65,6 +65,7 @@ public class MainTabsActivity extends BaseCommActivity<MainTabsPresenter> {
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.activity_tabs_main;
     }
 
