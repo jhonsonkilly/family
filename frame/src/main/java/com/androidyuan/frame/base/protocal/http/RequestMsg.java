@@ -29,7 +29,7 @@ public abstract class RequestMsg {
         //  put("v", com.androidyuan.frame.cores.utils.Utils.version);
         // put("os", com.androidyuan.frame.cores.utils.Utils.os);
 //        put("ver", com.androidyuan.frame.cores.utils.Utils.ver);
-        params.put("TOKEN", SharedPreferencesUtil.getStringData(WineApplication.gainContext(), "ut", ""));
+//        params.put("TOKEN", SharedPreferencesUtil.getStringData(WineApplication.gainContext(), "ut", ""));
 
     }
 

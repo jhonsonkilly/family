@@ -98,7 +98,10 @@ public abstract class BaseCommFragment<P extends BaseCommPresenter> extends Frag
 
 
         initAllWidget(view);
+
         firstShow();
+
+
     }
 
     //这里只需要fragment的布局文件即可  return R.layout.xxxxxx

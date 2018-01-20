@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/divider_color"
+    android:orientation="vertical">
+
+    <widget.ToolBar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:src="@mipmap/logo_03" />
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/phone"
+            android:textColor="@color/main_title_color"
+            android:textSize="14dp"
+            android:padding="7dp"
+            android:hint="请输入您的手机号码"
+            android:textColorHint="@color/divider_color"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:inputType="textPassword"
+            android:id="@+id/password"
+            android:textColor="@color/main_title_color"
+            android:textSize="14dp"
+            android:padding="7dp"
+            android:textColorHint="@color/divider_color"
+            android:hint="请输入密码"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_orange_corner"
+            android:text="确认登陆"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            />
+        <Button
+            android:id="@+id/regist"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_blue_corner"
+            android:text="注册"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            />
+        <Button
+            android:id="@+id/get_password"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_blue_corner"
+            android:text="找回密码"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

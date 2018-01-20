@@ -1,5 +1,10 @@
 package model;
 
+import com.androidyuan.frame.base.activity.WineApplication;
+import com.androidyuan.frame.cores.utils.SharedPreferencesUtil;
+
+import config.LoginHelper;
+
 /**
  * Created by mac on 18/1/13.
  */
@@ -7,12 +12,30 @@ package model;
 public class UserModel {
 
 
-    private String access_token;
-    private String client_id;
-    private String name;
-    private String phone;
-    private String cover;
-    private String score;
+    public String access_token;
+    public String client_id;
+    public String name;
+    public String phone;
+    public String cover;
+    public String score;
+    public String uid;
+    public String is_craftsman;
+
+    public static boolean isCraftsman() {
+        if (getIs_craftsman().equals("1")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static String getIs_craftsman() {
+        return SharedPreferencesUtil.getStringData(WineApplication.gainContext(), "isCraftsman", "");
+
+    }
+
+    public void setIs_craftsman(String is_craftsman) {
+        this.is_craftsman = is_craftsman;
+    }
 
     public String getAccess_token() {
         return access_token;
@@ -38,27 +61,35 @@ public class UserModel {
         this.name = name;
     }
 
-    public String getPhone() {
-        return phone;
+    public static String getPhone() {
+        return SharedPreferencesUtil.getStringData(WineApplication.gainContext(), "phone", "");
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public String getCover() {
-        return cover;
+    public static String getCover() {
+        return SharedPreferencesUtil.getStringData(WineApplication.gainContext(), "cover", "");
     }
 
     public void setCover(String cover) {
         this.cover = cover;
     }
 
-    public String getScore() {
-        return score;
+    public static String getScore() {
+        return SharedPreferencesUtil.getStringData(WineApplication.gainContext(), "score", "");
     }
 
     public void setScore(String score) {
         this.score = score;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

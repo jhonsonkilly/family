@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:id="@+id/pro_rl"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/white">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img_banner"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/img_banner"
+            android:ellipsize="end"
+            android:maxLines="1"
+
+            android:textColor="@color/theme_color"
+
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_1"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+
+            android:layout_toRightOf="@id/img_banner"
+            android:textColor="@color/main_title_color"
+            android:textSize="17dp" />
+
+        <TextView
+            android:drawableLeft="@mipmap/shop_22"
+            android:id="@+id/sale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price"
+
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/img_banner"
+            android:textColor="@color/main_title_color"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:id="@+id/cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="25dp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

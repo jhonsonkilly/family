@@ -3,7 +3,10 @@ package activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+
+
 import android.net.Uri;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,17 +22,24 @@ import com.androidyuan.frame.base.activity.BaseCommActivity;
 import com.androidyuan.frame.cores.utils.SharedPreferencesUtil;
 
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import Event.JianCaiFrgAttachEvent;
+import Event.LocationEvent;
 import family.live.R;
 import fragment.GongJiangFragment;
 import fragment.HomeFragment;
 import fragment.JianCaiFragment;
 import fragment.MineFragment;
 import fragment.QiangDanFragment;
+import model.MapWrapper;
 import otto.OttoBus;
+import otto.Subscribe;
 import presenter.MainTabsPresenter;
+import utils.LocationManager;
 import widget.TabChooser;
 import widget.TabChooserBean;
 import widget.TabSelectListener;
@@ -58,10 +68,13 @@ public class MainTabsActivity extends BaseCommActivity<MainTabsPresenter> {
 
     protected boolean bActive = true;
 
+    LocationManager locationManager;
 
 
     private int[] imgArr = new int[]{R.mipmap.footer_home_icon, R.mipmap.home_30, R.mipmap.home_36, R.mipmap.home_39, R.mipmap.home_42};
 
+
+    LocationManager.MapLocation location;
 
     @Override
     protected int getLayoutId() {
@@ -71,6 +84,8 @@ public class MainTabsActivity extends BaseCommActivity<MainTabsPresenter> {
 
     @Override
     protected void initAllWidget() {
+
+
         titleArr = getResources().getStringArray(R.array.home_tabs);
         tab_bar = (TabChooser) findViewById(R.id.tab_bar);
         tab_bar.setTabSelectListener(new TabSelectListener() {
@@ -87,6 +102,7 @@ public class MainTabsActivity extends BaseCommActivity<MainTabsPresenter> {
                         oldFragment = newFragment;
                         switchFragment(oldFragment, fragmentJianCai);
                         newFragment = fragmentJianCai;
+
 
                         break;
                     case 2:
@@ -132,16 +148,32 @@ public class MainTabsActivity extends BaseCommActivity<MainTabsPresenter> {
         addFragment(newFragment);
         tab_bar.setTabList(list);
 
-        //请求购物车数量
+
 
         OttoBus.getInstance().register(this);
 
-
+        locationManager = new LocationManager(this);
+        getLocationMes();
 
 
     }
 
+    public void getLocationMes() {
+        locationManager.setLocationListener(new LocationManager.LocationListener() {
+            @Override
+            public void onLocationChanged(LocationManager.MapLocation location) {
+                if (location != null) {
 
+                    MainTabsActivity.this.location = location;
+
+                    OttoBus.getInstance().post(new LocationEvent(location));
+
+
+                }
+            }
+        }).setOnceLocation(true)
+                .startLocation(getActivity());
+    }
 
 
     public void switchFragment(Fragment from, Fragment to) {
@@ -181,7 +213,11 @@ public class MainTabsActivity extends BaseCommActivity<MainTabsPresenter> {
 
     }
 
+    @Subscribe
+    public void getJianCaiFrg(JianCaiFrgAttachEvent event) {
 
+        OttoBus.getInstance().post(new LocationEvent(location));
+    }
 
 
     @Override
@@ -189,8 +225,6 @@ public class MainTabsActivity extends BaseCommActivity<MainTabsPresenter> {
         super.onDestroy();
         OttoBus.getInstance().unregister(this);
     }
-
-
 
 
     @Override
@@ -212,8 +246,6 @@ public class MainTabsActivity extends BaseCommActivity<MainTabsPresenter> {
             Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 
 
 }

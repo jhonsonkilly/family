@@ -18,8 +18,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 
-
 import java.util.HashMap;
+
+import config.LoginHelper;
 
 
 /**
@@ -93,7 +94,9 @@ public abstract class QMWebview extends WebView {
             settings.setAllowUniversalAccessFromFileURLs(true);
         }
 
-        String str = settings.getUserAgentString() + " QMTV/" + getVersionName(context);
+        String loginMes = "access_token=" + LoginHelper.token() + "&client_id=" + LoginHelper.getClient();
+        String str = settings.getUserAgentString() + loginMes;
+        Log.d("QMWebview", str);
         settings.setUserAgentString(str);
 
 
@@ -110,6 +113,36 @@ public abstract class QMWebview extends WebView {
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         context.startActivity(intent);
                         ((Activity) context).finish();
+                    } catch (Exception ex) {
+
+                    }
+                    return true;
+                }
+                if (url.contains("home/wechat")
+                        || url.contains("stores/index")
+                        || url.contains("bids/index")
+                        || url.contains("cases/index")
+                        || url.contains("account/index")
+                        || url.endsWith("account")) {
+
+
+                    try {
+
+                        ((Activity) context).finish();
+                    } catch (Exception ex) {
+
+                    }
+                    return true;
+                }
+
+                if (url.contains("tel")) {
+
+
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + url.split(":")[1]));
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        ((Activity) context).startActivity(intent);
+
                     } catch (Exception ex) {
 
                     }

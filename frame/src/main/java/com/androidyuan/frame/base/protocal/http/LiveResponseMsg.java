@@ -1,8 +1,10 @@
 package com.androidyuan.frame.base.protocal.http;
 
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
+import com.androidyuan.frame.base.activity.WineApplication;
 import com.androidyuan.frame.cores.log.CommonLogger;
 import com.androidyuan.frame.cores.utils.FastJSONHelper;
 
@@ -20,12 +22,13 @@ public abstract class LiveResponseMsg<T> extends ResponseMsg {
     protected T data;
 
     protected int resmsgWhat = 0;
-    protected int result = 0; // 状态位
+    protected int result = 0; //变成了是否成功的了
     protected JSONObject fastjsonObject;
     private String msg = ""; // 错误原因
     //
     private boolean isSuc = true; // 默认是true
     private String response;
+    private int code = 0;
 
 
     public LiveResponseMsg(int what) {
@@ -98,11 +101,25 @@ public abstract class LiveResponseMsg<T> extends ResponseMsg {
         return !isSuc();
     }
 
+    public void setResult(int code) {
+        this.code = code;
+    }
+
 
     //这个可以重写有时候会有多种状态 都代表成功
     public boolean isSuc() {
+        if (code == 200) {
 
-        return isSuc;
+            if (!isSuc) {
+
+                Toast.makeText(WineApplication.gainContext(), getMsg(), Toast.LENGTH_LONG).show();
+            }
+            return isSuc;
+        } else {
+            Toast.makeText(WineApplication.gainContext(), "未知错误", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
     }
 
     public String getMsg() {
@@ -114,4 +131,6 @@ public abstract class LiveResponseMsg<T> extends ResponseMsg {
 
         this.msg = msg;
     }
+
+
 }

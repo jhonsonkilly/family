@@ -88,12 +88,12 @@ public class HttpTool {
     public void requestGet(final RequestMsg req, final ResponseMsg res, final Handler handler) {
         String mUrl = req.getUrl();
         //添加token
-        if (req.getUrl().contains("?")) {
+        /*if (req.getUrl().contains("?")) {
             mUrl += "&";
         } else {
             mUrl += "?";
-        }
-        mUrl += "TOKEN=" + SharedPreferencesUtil.getStringData(WineApplication.gainContext(), "ut", "");
+        }*/
+
 
         Request request = new Request.Builder()
                 .url(mUrl)

@@ -62,27 +62,50 @@ public class UrlConfig {
         String uriString = getInterfaceConfigureUrl() + "/api/send_reg_code" + sb.toString();
         return uriString;
     }
+
     //注册接口
     public static String registUrl() {
         StringBuilder sb = new StringBuilder(buildAllParams());
         String uriString = getInterfaceConfigureUrl() + "/api/register" + sb.toString();
         return uriString;
     }
+
     //退出登录接口
     public static String cancelLoginUrl() {
         StringBuilder sb = new StringBuilder(buildAllParams());
         String uriString = getInterfaceConfigureUrl() + "/api/logout" + sb.toString();
         return uriString;
     }
+
     //首页
     public static String homePageUrl() {
         StringBuilder sb = new StringBuilder(buildAllParams());
         String uriString = getInterfaceConfigureUrl() + "/api/index" + sb.toString();
         return uriString;
     }
+
     public static String LoginUrl() {
         StringBuilder sb = new StringBuilder(buildAllParams());
         String uriString = getInterfaceConfigureUrl() + "/api/login" + sb.toString();
+        return uriString;
+    }
+
+    //建材商城
+    public static String JianCaiUrl(String params) {
+        StringBuilder sb = new StringBuilder(buildAllParams());
+        String uriString = getInterfaceConfigureUrl() + "/api/stores" + sb.toString() + params;
+        return uriString;
+    }
+
+    public static String GongJiangUrl() {
+        StringBuilder sb = new StringBuilder(buildAllParams());
+        String uriString = getInterfaceConfigureUrl() + "/api/cases" + sb.toString();
+        return uriString;
+    }
+
+    public static String QiangDanUrl() {
+        StringBuilder sb = new StringBuilder(buildAllParams());
+        String uriString = getInterfaceConfigureUrl() + "/api/bids" + sb.toString();
         return uriString;
     }
 }
