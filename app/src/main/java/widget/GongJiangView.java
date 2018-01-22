@@ -117,7 +117,7 @@ public class GongJiangView extends FrameLayout implements View.OnClickListener {
     }
 
     @Subscribe
-    void loginSucess(LoginSucessEvent event) {
+    public void loginSucess(LoginSucessEvent event) {
 
 
         getIsUser();

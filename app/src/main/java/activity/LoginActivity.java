@@ -56,7 +56,7 @@ public class LoginActivity extends BaseCommActivity<MinePresenter> implements IL
     }
 
     @Subscribe
-    void loginSucess(LoginSucessEvent event) {
+    public void loginSucess(LoginSucessEvent event) {
 
         finish();
     }
