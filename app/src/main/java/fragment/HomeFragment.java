@@ -65,7 +65,7 @@ public class HomeFragment extends BaseCommFragment<HomePresenter> implements IHo
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), WebActivity.class);
-                intent.putExtra(ParamsConfig.LOADURL, "http://180110fg0025.umaman.com/hongbao/game.html?nickname=&mobile=15818888899&avatar=&ut=abc&activity_id=5a607604d3df9001a5343685");
+                intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/renovation");
                 getActivity().startActivity(intent);
 
             }

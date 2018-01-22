@@ -29,6 +29,7 @@ import java.util.List;
 
 import Event.JianCaiFrgAttachEvent;
 import Event.LocationEvent;
+import Event.QiangDanFrgAttachEvent;
 import family.live.R;
 import fragment.GongJiangFragment;
 import fragment.HomeFragment;
@@ -215,6 +216,12 @@ public class MainTabsActivity extends BaseCommActivity<MainTabsPresenter> {
 
     @Subscribe
     public void getJianCaiFrg(JianCaiFrgAttachEvent event) {
+
+        OttoBus.getInstance().post(new LocationEvent(location));
+    }
+
+    @Subscribe
+    public void getQiangDanFrg(QiangDanFrgAttachEvent event) {
 
         OttoBus.getInstance().post(new LocationEvent(location));
     }

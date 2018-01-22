@@ -42,4 +42,7 @@
 
     <drawable name="normal_color">#4F4F4F</drawable>
     <drawable name="select_color">	#46A3FF</drawable>
+
+
+    <drawable name="select_color_orange">#ff6900</drawable>
 </resources>

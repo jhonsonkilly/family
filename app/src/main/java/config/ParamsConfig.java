@@ -7,4 +7,10 @@ package config;
 public class ParamsConfig {
 
     public static String LOADURL = "url";
+
+    public static String QIANGDAN_POS = "pos";
+
+    public static class Page {
+        public static int total_number = 10;
+    }
 }
