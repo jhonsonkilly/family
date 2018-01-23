@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.androidyuan.frame.cores.utils.image.FrescoUtils;
@@ -34,8 +35,14 @@ public class QiangDanAdapter extends PullRefreshAdapter<QiangDanModel.Items, Qia
     @Override
     public QiangDanAdapter.Holder onCreateItemViewHolder(ViewGroup parent, int viewType) {
         View convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_qiangdan_list, parent, false);
-        Holder liveFragholder=new Holder(convertView);
-        liveFragholder.iv_item_isLive=BaseViewHolder.get(convertView, R.id.hor_text);
+        Holder liveFragholder = new Holder(convertView);
+        liveFragholder.text_xuqiu = BaseViewHolder.get(convertView, R.id.text_xuqiu);
+        liveFragholder.text_address = BaseViewHolder.get(convertView, R.id.text_address);
+        liveFragholder.qiangdan_button = BaseViewHolder.get(convertView, R.id.qiangdan_button);
+        liveFragholder.text_yuyue_date = BaseViewHolder.get(convertView, R.id.text_yuyue_date);
+        liveFragholder.text_date = BaseViewHolder.get(convertView, R.id.text_date);
+        liveFragholder.recycler_view = BaseViewHolder.get(convertView, R.id.recycler_view);
+        liveFragholder.text_note = BaseViewHolder.get(convertView, R.id.beizhu);
 
 
         return liveFragholder;
@@ -43,19 +50,25 @@ public class QiangDanAdapter extends PullRefreshAdapter<QiangDanModel.Items, Qia
 
     @Override
     public void onBindItemViewHolder(QiangDanAdapter.Holder holder, int position) {
-       QiangDanModel.Items map=getList().get(position);
-        holder.iv_item_isLive.setText(map.address);
+        QiangDanModel.Items item = getList().get(position);
+        holder.text_xuqiu.setText("服务需求:  " + item.cate);
+        holder.text_address.setText("服务地址:  " + item.address);
+        holder.text_date.setText("预约日期:  " + item.book_date);
+        holder.text_yuyue_date.setText("预约时间:  " + item.book_time);
+        holder.text_note.setText("备注说明:  " + item.content);
+
 
     }
 
     class Holder extends RecyclerView.ViewHolder {
-        SimpleDraweeView iv_item_live_cover;
-        SimpleDraweeView iv_item_recycle_host_head;
-        //SimpleDraweeView iv_item_recycle_host_head;
-        TextView tv_live_hostname;
-        TextView tv_item_live_viewernum;
-        TextView tv_item_live_title;
-        TextView iv_item_isLive;
+
+        TextView text_date;
+        TextView text_yuyue_date;
+        Button qiangdan_button;
+        TextView text_address;
+        TextView text_xuqiu;
+        RecyclerView recycler_view;
+        TextView text_note;
 
         public Holder(View itemView) {
             super(itemView);

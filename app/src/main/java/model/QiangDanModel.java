@@ -22,6 +22,7 @@ public class QiangDanModel {
         public String cate;
         public List<String> images;
         public String is_bid;
+        public String book_time;
 
     }
 }

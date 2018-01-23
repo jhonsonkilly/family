@@ -32,7 +32,7 @@ import android.widget.RelativeLayout;
 
 public class SuperSwipeRefreshLayout extends RelativeLayout {
     private static final String LOG_TAG = "CustomeSwipeRefreshLayout";
-    private static final int HEADER_VIEW_HEIGHT = 85;// HeaderView height (dp)
+    private static final int HEADER_VIEW_HEIGHT = 30;// HeaderView height (dp)
     private static final int LOADING_VIEW_HEIGHT = 40;
 
     private static final float DRAG_RATE = .4f;
@@ -40,7 +40,7 @@ public class SuperSwipeRefreshLayout extends RelativeLayout {
     private static final int SCALE_DOWN_DURATION = 200;
     private static final int ANIMATE_TO_TRIGGER_DURATION = 150;
     private static final int ANIMATE_TO_START_DURATION = 150;
-    private static final int DEFAULT_CIRCLE_TARGET = 80;
+    private static final int DEFAULT_CIRCLE_TARGET = 50;
 
 
     private View mTarget;
@@ -167,7 +167,7 @@ public class SuperSwipeRefreshLayout extends RelativeLayout {
         mHeadViewContainer.removeAllViews();
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 mHeaderViewWidth, mHeaderViewHeight);
-        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+
         mHeadViewContainer.addView(child, layoutParams);
     }
 
@@ -449,7 +449,7 @@ public class SuperSwipeRefreshLayout extends RelativeLayout {
                         MeasureSpec.EXACTLY));
         mHeadViewContainer.measure(MeasureSpec.makeMeasureSpec(
                 mHeaderViewWidth, MeasureSpec.EXACTLY), MeasureSpec
-                .makeMeasureSpec(4 * mHeaderViewHeight, MeasureSpec.EXACTLY));
+                .makeMeasureSpec( mHeaderViewHeight, MeasureSpec.EXACTLY));
         mFooterViewContainer.measure(MeasureSpec.makeMeasureSpec(
                 mFooterViewWidth, MeasureSpec.EXACTLY), MeasureSpec
                 .makeMeasureSpec(mFooterViewHeight, MeasureSpec.EXACTLY));

@@ -4,7 +4,10 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:background="@color/red"
+        android:textColor="@color/main_title_color"
+        android:gravity="center"
+        android:text="没有更多了..."
+        android:padding="5dp"
         android:id="@+id/tx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

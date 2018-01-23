@@ -9,6 +9,7 @@
         android:layout_height="match_parent">
 
         <widget.refreshlist.NewPullLoadMoreRecycleView
+            android:background="@color/background_color"
             android:id="@+id/pull_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
