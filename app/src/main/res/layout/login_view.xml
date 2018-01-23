@@ -51,14 +51,17 @@
             android:layout_height="wrap_content" />
 
         <Button
+            android:textColor="@color/white"
             android:id="@+id/login"
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_orange_corner"
             android:text="确认登陆"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+
             />
         <Button
+            android:textColor="@color/white"
             android:id="@+id/regist"
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_blue_corner"
@@ -67,6 +70,7 @@
             android:layout_height="40dp"
             />
         <Button
+            android:textColor="@color/white"
             android:id="@+id/get_password"
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_blue_corner"

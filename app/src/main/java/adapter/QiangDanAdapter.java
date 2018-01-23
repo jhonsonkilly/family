@@ -66,7 +66,7 @@ public class QiangDanAdapter extends PullRefreshAdapter<QiangDanModel.Items, Qia
             holder.qiangdan_button.setBackgroundResource(R.drawable.shape_gray_corner_3);
             holder.qiangdan_button.setClickable(false);
         }else{
-            holder.qiangdan_button.setBackgroundResource(R.drawable.text_shape_selector);
+            holder.qiangdan_button.setBackgroundResource(R.drawable.shape_orange_corner);
             holder.qiangdan_button.setClickable(true);
         }
 
