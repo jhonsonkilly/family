@@ -60,86 +60,68 @@ public class UserView extends FrameLayout implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.service_order:
-                if (LoginHelper.isLogin()) {
-                    Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/services");
-                    context.startActivity(intent);
-                } else {
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                }
+
+                Intent intent1 = new Intent(getContext(), WebActivity.class);
+                intent1.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/services");
+                context.startActivity(intent1);
+
 
                 break;
             case R.id.shop_order:
-                if (LoginHelper.isLogin()) {
-                    Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/orders");
-                    context.startActivity(intent);
-                } else {
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                }
+
+                Intent intent2 = new Intent(getContext(), WebActivity.class);
+                intent2.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/orders");
+                context.startActivity(intent2);
+
                 break;
             case R.id.shouhuo_address:
-                if (LoginHelper.isLogin()) {
-                    Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/shippings");
-                    context.startActivity(intent);
-                } else {
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                }
+
+                Intent intent3 = new Intent(getContext(), WebActivity.class);
+                intent3.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/shippings");
+                context.startActivity(intent3);
+
                 break;
             case R.id.my_message:
-                if (LoginHelper.isLogin()) {
-                    Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/messages");
-                    context.startActivity(intent);
-                } else {
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                }
+
+                Intent intent4 = new Intent(getContext(), WebActivity.class);
+                intent4.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/messages");
+                context.startActivity(intent4);
+
                 break;
             case R.id.my_account:
-                if (LoginHelper.isLogin()) {
-                    Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/score");
-                    context.startActivity(intent);
-                } else {
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                }
+
+                Intent intent5 = new Intent(getContext(), WebActivity.class);
+                intent5.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/score");
+                context.startActivity(intent5);
+
                 break;
             case R.id.my_rizhi:
-                if (LoginHelper.isLogin()) {
-                    Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/cases/1");
-                    context.startActivity(intent);
-                } else {
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                }
+
+                Intent intent6 = new Intent(getContext(), WebActivity.class);
+                intent6.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/cases/1");
+                context.startActivity(intent6);
+
                 break;
             case R.id.my_collection:
-                if (LoginHelper.isLogin()) {
-                    Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/collect");
-                    context.startActivity(intent);
-                } else {
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                }
+
+                Intent intent7 = new Intent(getContext(), WebActivity.class);
+                intent7.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/collect");
+                context.startActivity(intent7);
+
                 break;
             case R.id.set_password:
-                if (LoginHelper.isLogin()) {
-                    Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/password");
-                    context.startActivity(intent);
-                } else {
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                }
+
+                Intent intent8 = new Intent(getContext(), WebActivity.class);
+                intent8.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/password");
+                context.startActivity(intent8);
+
                 break;
             case R.id.share:
-                if (LoginHelper.isLogin()) {
-                    Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/share");
-                    context.startActivity(intent);
-                } else {
-                    context.startActivity(new Intent(context, LoginActivity.class));
-                }
+
+                Intent intent9 = new Intent(getContext(), WebActivity.class);
+                intent9.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/share");
+                context.startActivity(intent9);
+
                 break;
             case R.id.quit_login:
                 OttoBus.getInstance().post(new QuitLoginEvent());

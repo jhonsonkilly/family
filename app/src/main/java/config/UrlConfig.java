@@ -108,4 +108,10 @@ public class UrlConfig {
         String uriString = getInterfaceConfigureUrl() + "/api/bids" + sb.toString();
         return uriString;
     }
+
+    public static String QiangDanYuYueUrl() {
+        StringBuilder sb = new StringBuilder(buildAllParams());
+        String uriString = getInterfaceConfigureUrl() + "/api/deal_bid" + sb.toString();
+        return uriString;
+    }
 }

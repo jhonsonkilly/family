@@ -12,4 +12,6 @@ import model.QiangDanModel;
 public interface IQiangDanView extends IBaseCommView  {
 
     void getQiangDanList(QiangDanModel model);
+
+    void QiangDanSucess(String msg);
 }

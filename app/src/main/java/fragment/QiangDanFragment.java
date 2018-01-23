@@ -75,15 +75,15 @@ public class QiangDanFragment extends BaseCommFragment<QiangDanPresenter> {
     protected void clickView(View v) {
         switch (v.getId()) {
             case R.id.title_1:
-                viewPager.setCurrentItem(0);
+                viewPager.setCurrentItem(0,false);
                 setSelector(true, false, false);
                 break;
             case R.id.title_2:
-                viewPager.setCurrentItem(1);
+                viewPager.setCurrentItem(1,false);
                 setSelector(false, true, false);
                 break;
             case R.id.title_3:
-                viewPager.setCurrentItem(2);
+                viewPager.setCurrentItem(2,false);
                 setSelector(false, false, true);
                 break;
         }

@@ -35,7 +35,7 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="55dp"
-                android:background="@color/background_color" />
+                android:background="@color/divider_color" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,7 +59,7 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="55dp"
-                android:background="@color/background_color" />
+                android:background="@color/divider_color" />
         </LinearLayout>
 
         <TextView
@@ -75,7 +75,7 @@
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
-        android:background="@color/white"
+        android:background="@color/background_color"
         android:id="@+id/view_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

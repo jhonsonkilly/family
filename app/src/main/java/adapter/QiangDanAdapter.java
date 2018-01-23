@@ -8,14 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.androidyuan.frame.cores.utils.image.FrescoUtils;
-import com.facebook.drawee.view.SimpleDraweeView;
-
 import java.util.List;
-import java.util.Map;
 
 import family.live.R;
-import model.HomePageModel;
 import model.QiangDanModel;
 import utils.BaseViewHolder;
 import widget.refreshlist.PullRefreshAdapter;
@@ -26,6 +21,8 @@ import widget.refreshlist.PullRefreshAdapter;
  */
 
 public class QiangDanAdapter extends PullRefreshAdapter<QiangDanModel.Items, QiangDanAdapter.Holder> {
+
+    OnQiangDanClick click;
 
     public QiangDanAdapter(List<QiangDanModel.Items> list, Context context) {
 
@@ -49,13 +46,29 @@ public class QiangDanAdapter extends PullRefreshAdapter<QiangDanModel.Items, Qia
     }
 
     @Override
-    public void onBindItemViewHolder(QiangDanAdapter.Holder holder, int position) {
-        QiangDanModel.Items item = getList().get(position);
+    public void onBindItemViewHolder(final QiangDanAdapter.Holder holder, int position) {
+        final QiangDanModel.Items item = getList().get(position);
         holder.text_xuqiu.setText("服务需求:  " + item.cate);
         holder.text_address.setText("服务地址:  " + item.address);
         holder.text_date.setText("预约日期:  " + item.book_date);
         holder.text_yuyue_date.setText("预约时间:  " + item.book_time);
         holder.text_note.setText("备注说明:  " + item.content);
+       holder.qiangdan_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(click!=null){
+                    click.click(item.id,holder.qiangdan_button);
+                }
+
+            }
+        });
+        if(item.is_bid.equals("1")){
+            holder.qiangdan_button.setBackgroundResource(R.drawable.shape_gray_corner_3);
+            holder.qiangdan_button.setClickable(false);
+        }else{
+            holder.qiangdan_button.setBackgroundResource(R.drawable.text_shape_selector);
+            holder.qiangdan_button.setClickable(true);
+        }
 
 
     }
@@ -74,5 +87,13 @@ public class QiangDanAdapter extends PullRefreshAdapter<QiangDanModel.Items, Qia
             super(itemView);
         }
 
+    }
+
+    public interface OnQiangDanClick{
+        void click(String id,Button button);
+    }
+
+    public void setOnQiangDanClick(OnQiangDanClick click){
+       this.click=click;
     }
 }

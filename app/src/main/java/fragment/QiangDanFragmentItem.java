@@ -1,10 +1,16 @@
 package fragment;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.androidyuan.frame.base.activity.WineApplication;
 import com.androidyuan.frame.base.fragment.BaseCommFragment;
 
 import java.util.ArrayList;
@@ -13,8 +19,11 @@ import java.util.Map;
 
 import Event.JianCaiFrgAttachEvent;
 import Event.LocationEvent;
+import Event.QiangDanClickEvent;
 import Event.QiangDanFrgAttachEvent;
+import activity.LoginActivity;
 import adapter.QiangDanAdapter;
+import config.LoginHelper;
 import config.ParamsConfig;
 import family.live.R;
 import iview.IQiangDanView;
@@ -36,6 +45,9 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
     LocationEvent event;
     int page = 1;
     private List<QiangDanModel.Items> mList = new ArrayList<>();
+    private TextView text_no_data;
+    private QiangDanAdapter adapter;
+    Button button;
 
 
     @Override
@@ -55,6 +67,7 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
     @Override
     protected void initAllWidget(View view) {
         recyclerView = view.findViewById(R.id.pull_recyclerview);
+        text_no_data = view.findViewById(R.id.no_data);
         recyclerView.setPullLoadMoreListener(new PullLoadMoreListener() {
             @Override
             public void onRefresh() {
@@ -75,7 +88,38 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
 
             }
         });
-        recyclerView.setLinearLayout(new QiangDanAdapter(mList, getContext()));
+        adapter = new QiangDanAdapter(mList, getContext());
+        adapter.setOnQiangDanClick(new QiangDanAdapter.OnQiangDanClick() {
+            @Override
+            public void click(final String id, Button button) {
+                QiangDanFragmentItem.this.button=button;
+                if (LoginHelper.isLogin()) {
+                    final Dialog dialog = new Dialog(getContext(), R.style.MyDialog);
+
+                    dialog.setContentView(R.layout.layout_servicedialog);
+                    final EditText editText = dialog.findViewById(R.id.money);
+                    dialog.findViewById(R.id.text_cancel).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.findViewById(R.id.text_confirm).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            presenter.getQiangDanYuYue(id, editText.getText().toString());
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
+                } else {
+                    to(LoginActivity.class);
+                }
+
+            }
+        });
+
+        recyclerView.setLinearLayout(adapter);
 
     }
 
@@ -106,6 +150,8 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
     }
 
 
+
+
     public static QiangDanFragmentItem getInstance(int position) {
         QiangDanFragmentItem newFragment = new QiangDanFragmentItem();
         Bundle bundle = new Bundle();
@@ -123,22 +169,37 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
     @Override
     public void getQiangDanList(QiangDanModel model) {
 
-        recyclerView.stopAnim();
-        if (page == 1) {
-            recyclerView.clearData();
-        }
-        recyclerView.showMoreData(model.items);
-        if (page == 3) {
-            recyclerView.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    recyclerView.showEndAnimation(true);
-                }
-            }, 300);
 
+        if (model.items.size() != 0) {
+            text_no_data.setVisibility(View.GONE);
+            recyclerView.stopAnim();
+            if (page == 1) {
+                recyclerView.clearData();
+            }
+            recyclerView.showMoreData(model.items);
+            if (page == 3) {
+                recyclerView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerView.showEndAnimation(true);
+                    }
+                }, 300);
+
+            } else {
+
+                recyclerView.showEndAnimation(false);
+            }
         } else {
-
-            recyclerView.showEndAnimation(false);
+            text_no_data.setVisibility(View.VISIBLE);
         }
+
+    }
+
+    @Override
+    public void QiangDanSucess(String msg) {
+        Toast.makeText(WineApplication.gainContext(), msg, Toast.LENGTH_LONG).show();
+        button.setBackgroundResource(R.drawable.shape_gray_corner_3);
+        button.setClickable(false);
+
     }
 }
