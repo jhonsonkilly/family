@@ -287,7 +287,7 @@ public abstract class BaseCommActivity<P extends BaseCommPresenter> extends AppC
 
     public void showToast(final String str) {
 
-        toast(str, true);
+        toast(str, false);
     }
 
     public void toast(final String str, final boolean centerFlag) {

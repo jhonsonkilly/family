@@ -114,4 +114,17 @@ public class UrlConfig {
         String uriString = getInterfaceConfigureUrl() + "/api/deal_bid" + sb.toString();
         return uriString;
     }
+    //找回密码
+    public static String getPasswordUrl() {
+        StringBuilder sb = new StringBuilder(buildAllParams());
+        String uriString = getInterfaceConfigureUrl() + "/api/deal_password" + sb.toString();
+        return uriString;
+    }
+
+    public static String sendGetPasswordSmsUrl(String phone) {
+        StringBuilder sb = new StringBuilder(buildAllParams());
+        sb.append("&phone=" + phone);
+        String uriString = getInterfaceConfigureUrl() + "/api/send_reg_code" + sb.toString();
+        return uriString;
+    }
 }

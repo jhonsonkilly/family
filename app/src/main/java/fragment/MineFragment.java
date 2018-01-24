@@ -1,5 +1,6 @@
 package fragment;
 
+import android.content.Intent;
 import android.view.View;
 
 import com.androidyuan.frame.base.fragment.BaseCommFragment;
@@ -7,6 +8,8 @@ import com.androidyuan.frame.base.fragment.BaseCommFragment;
 import Event.LoginEvent;
 import Event.LoginSucessEvent;
 import Event.QuitLoginEvent;
+import Event.RegistSucessEvent;
+import activity.RegistActivity;
 import config.LoginHelper;
 import family.live.R;
 import iview.ILoginView;
@@ -80,9 +83,17 @@ public class MineFragment extends BaseCommFragment<MinePresenter> implements ILo
         presenter.quitLoginMes();
     }
 
+
+
     @Subscribe
     public void loginSucess(LoginSucessEvent event) {
 
+
+        getLoginState();
+    }
+
+    @Subscribe
+    public void RegistSucess(RegistSucessEvent event){
 
         getLoginState();
     }

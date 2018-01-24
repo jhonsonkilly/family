@@ -81,6 +81,17 @@
 
         </activity>
 
+        <activity
+            android:name="activity.RegistActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name="activity.ForgetPassWordActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="acfafceae445942c9524ecc2e58a6323" />

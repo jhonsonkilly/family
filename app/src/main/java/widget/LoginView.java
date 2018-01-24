@@ -1,6 +1,7 @@
 package widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -9,9 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
-import Event.GetPasswordEvent;
 import Event.LoginEvent;
-import Event.RegistEvent;
+import activity.ForgetPassWordActivity;
+import activity.RegistActivity;
 import family.live.R;
 import otto.OttoBus;
 
@@ -25,6 +26,7 @@ public class LoginView extends FrameLayout implements View.OnClickListener {
     private EditText phone_password;
     private Button login;
     private ToolBar toolBar;
+    Context context;
 
     public LoginView(@NonNull Context context) {
         super(context);
@@ -42,6 +44,7 @@ public class LoginView extends FrameLayout implements View.OnClickListener {
     }
 
     public void init(Context context) {
+        this.context=context;
         View root = View.inflate(context, R.layout.login_view, null);
         toolBar = root.findViewById(R.id.tool_bar);
         phone_number = root.findViewById(R.id.phone);
@@ -66,10 +69,13 @@ public class LoginView extends FrameLayout implements View.OnClickListener {
                 OttoBus.getInstance().post(new LoginEvent(phone_number.getText().toString(),phone_password.getText().toString()));
                 break;
             case R.id.regist:
-                OttoBus.getInstance().post(new RegistEvent());
+
+
+                context.startActivity(new Intent(getContext(), RegistActivity.class));
                 break;
             case R.id.get_password:
-                OttoBus.getInstance().post(new GetPasswordEvent());
+                context.startActivity(new Intent(getContext(), ForgetPassWordActivity.class));
+
                 break;
         }
     }

@@ -1,5 +1,6 @@
 package activity;
 
+import android.content.Intent;
 import android.view.View;
 
 import com.androidyuan.frame.base.activity.BaseCommActivity;
@@ -60,6 +61,8 @@ public class LoginActivity extends BaseCommActivity<MinePresenter> implements IL
 
         finish();
     }
+
+
 
     @Override
     public void showLogin(UserModel model) {
