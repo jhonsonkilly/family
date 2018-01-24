@@ -44,6 +44,7 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
     private int position;
     LocationEvent event;
     int page = 1;
+    int total_page;
     private List<QiangDanModel.Items> mList = new ArrayList<>();
     private TextView text_no_data;
     private QiangDanAdapter adapter;
@@ -78,7 +79,7 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
             @Override
             public void onLoadMore() {
 
-                if (page < 3) {
+                if (page < total_page) {
                     page++;
                     presenter.getQiangDanList(event.location.x, event.location.y, position, page);
                 } else {
@@ -92,7 +93,7 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
         adapter.setOnQiangDanClick(new QiangDanAdapter.OnQiangDanClick() {
             @Override
             public void click(final String id, Button button) {
-                QiangDanFragmentItem.this.button=button;
+                QiangDanFragmentItem.this.button = button;
                 if (LoginHelper.isLogin()) {
                     final Dialog dialog = new Dialog(getContext(), R.style.MyDialog);
 
@@ -150,8 +151,6 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
     }
 
 
-
-
     public static QiangDanFragmentItem getInstance(int position) {
         QiangDanFragmentItem newFragment = new QiangDanFragmentItem();
         Bundle bundle = new Bundle();
@@ -170,14 +169,17 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
     public void getQiangDanList(QiangDanModel model) {
 
 
+        total_page = (int) Math.ceil((Integer.parseInt(model.total_count) + 1f) / ParamsConfig.Page.total_number);
+
         if (model.items.size() != 0) {
+            recyclerView.setVisibility(View.VISIBLE);
             text_no_data.setVisibility(View.GONE);
             recyclerView.stopAnim();
             if (page == 1) {
                 recyclerView.clearData();
             }
             recyclerView.showMoreData(model.items);
-            if (page == 3) {
+            if (page == total_page) {
                 recyclerView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -190,6 +192,7 @@ public class QiangDanFragmentItem extends BaseCommFragment<QiangDanItemPresenter
                 recyclerView.showEndAnimation(false);
             }
         } else {
+            recyclerView.setVisibility(View.GONE);
             text_no_data.setVisibility(View.VISIBLE);
         }
 

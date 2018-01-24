@@ -82,11 +82,13 @@
         </activity>
 
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name="activity.RegistActivity"
             android:screenOrientation="portrait">
 
         </activity>
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name="activity.ForgetPassWordActivity"
             android:screenOrientation="portrait">
 
