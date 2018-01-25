@@ -56,6 +56,10 @@ public class LocationManager {
 
     public LocationManager setOnceLocation(boolean isOnce) {
         mLocationOption.setOnceLocation(isOnce);
+        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+
+
+        mLocationOption.setOnceLocationLatest(true);
         return this;
     }
 

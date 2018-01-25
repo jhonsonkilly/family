@@ -95,8 +95,7 @@ public abstract class QMWebview extends WebView {
         }
 
         String loginMes = "access_token=" + LoginHelper.token() + "&client_id=" + LoginHelper.getClient();
-        String str = settings.getUserAgentString() + loginMes;
-        Log.d("QMWebview", str);
+        String str = settings.getUserAgentString() + loginMes;;
         settings.setUserAgentString(str);
 
 
