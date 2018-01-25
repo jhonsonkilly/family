@@ -23,6 +23,7 @@ import java.util.LinkedHashMap;
 
 import Event.LocationEvent;
 import activity.LoginActivity;
+import activity.MainTabsActivity;
 import activity.WebActivity;
 import adapter.HorListAdapter;
 import config.LoginHelper;
@@ -33,6 +34,7 @@ import model.HomePageModel;
 import otto.OttoBus;
 import otto.Subscribe;
 import presenter.HomePresenter;
+import utils.LocationManager;
 import widget.ToolBar;
 
 /**
@@ -73,7 +75,19 @@ public class HomeFragment extends BaseCommFragment<HomePresenter> implements IHo
         toolBar.showLacIcon().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), event.location.address, Toast.LENGTH_LONG).show();
+                new LocationManager(getContext()).setLocationListener(new LocationManager.LocationListener() {
+                    @Override
+                    public void onLocationChanged(LocationManager.MapLocation location) {
+                        if (location != null) {
+
+                            Toast.makeText(getContext(), location.address, Toast.LENGTH_LONG).show();
+
+
+                        }
+                    }
+                }).setOnceLocation(true)
+                        .startLocation(getActivity());
+
             }
         });
         bannerView = view.findViewById(R.id.bannerView);

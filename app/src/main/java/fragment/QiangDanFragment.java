@@ -42,6 +42,7 @@ public class QiangDanFragment extends BaseCommFragment<QiangDanPresenter> {
         title3.setOnClickListener(this);
 
         viewPager = view.findViewById(R.id.view_page);
+        viewPager.setOffscreenPageLimit(4);
         adapter = new QiangDanFragmentAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         setSelector(true, false, false);
