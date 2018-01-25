@@ -11,6 +11,8 @@ import msg.LoginReqMsg;
 import msg.LoginResMsg;
 import msg.QuitLoginReqMsg;
 import msg.QuitLoginResMsg;
+import msg.UpdateDataReqMsg;
+import msg.UpdateDataResMsg;
 
 /**
  * Created by mac on 18/1/19.
@@ -20,6 +22,7 @@ public class MinePresenter extends BaseCommPresenter<ILoginView> {
 
     private static final int RES_LOGIN_MES = 0x1024;
     private static final int QUIT_LOGIN_MES = 0x1025;
+    private static final int UPDATE_DATA_MSG = 0x1026;
 
     @Override
     public void initData(Bundle saveInstnce) {
@@ -33,6 +36,7 @@ public class MinePresenter extends BaseCommPresenter<ILoginView> {
 
             case RES_LOGIN_MES:
             case QUIT_LOGIN_MES:
+            case UPDATE_DATA_MSG:
 
                 if (msg.obj != null) {
 
@@ -56,6 +60,12 @@ public class MinePresenter extends BaseCommPresenter<ILoginView> {
         sendHttpGet(req, res);
     }
 
+    public void updateData() {
+        UpdateDataReqMsg req = new UpdateDataReqMsg();
+        UpdateDataResMsg res = new UpdateDataResMsg(UPDATE_DATA_MSG);
+        sendHttpGet(req, res);
+    }
+
     public void handleResult(Object res) {
 
 
@@ -74,6 +84,17 @@ public class MinePresenter extends BaseCommPresenter<ILoginView> {
 
                 //iView.showLogin(msg.getData());
                 iView.quitLogin();
+
+            }
+        }
+
+        if (res instanceof UpdateDataResMsg) {
+            UpdateDataResMsg msg = (UpdateDataResMsg) res;
+            if (msg.isSuc()) {
+
+                //iView.showLogin(msg.getData());
+                // iView.quitLogin();
+                iView.updateData(msg.getData());
 
             }
         }

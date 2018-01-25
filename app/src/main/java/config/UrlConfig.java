@@ -127,4 +127,18 @@ public class UrlConfig {
         String uriString = getInterfaceConfigureUrl() + "/api/send_reg_code" + sb.toString();
         return uriString;
     }
+
+    public static String updateDataUrl() {
+        StringBuilder sb = new StringBuilder(buildAllParams());
+        String uriString = getInterfaceConfigureUrl() + "/api/account" + sb.toString();
+        return uriString;
+    }
+
+    public static String gongJiangZanUrl() {
+        StringBuilder sb = new StringBuilder(buildAllParams());
+        String uriString = getInterfaceConfigureUrl() + "/api/deal_ding" + sb.toString();
+        return uriString;
+    }
+
+
 }

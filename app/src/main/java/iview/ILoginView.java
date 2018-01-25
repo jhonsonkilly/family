@@ -4,6 +4,7 @@ import com.androidyuan.frame.base.view.IBaseCommView;
 
 
 import model.HomePageModel;
+import model.UpdateModel;
 import model.UserModel;
 
 /**
@@ -21,6 +22,8 @@ public interface ILoginView extends IBaseCommView {
     void showLogin(UserModel model);
 
     void quitLogin();
+
+    void updateData(UpdateModel model);
 
 
 }

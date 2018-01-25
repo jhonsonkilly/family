@@ -10,6 +10,7 @@ import Event.LoginSucessEvent;
 import config.LoginHelper;
 import family.live.R;
 import iview.ILoginView;
+import model.UpdateModel;
 import model.UserModel;
 import otto.OttoBus;
 import otto.Subscribe;
@@ -69,7 +70,7 @@ public class LoginActivity extends BaseCommActivity<MinePresenter> implements IL
         //先后顺序
         LoginHelper.setLoginMes(model);
 
-        OttoBus.getInstance().post(new LoginSucessEvent(model));
+        OttoBus.getInstance().post(new LoginSucessEvent());
 
 
     }
@@ -83,6 +84,11 @@ public class LoginActivity extends BaseCommActivity<MinePresenter> implements IL
 
     @Override
     public void quitLogin() {
+
+    }
+
+    @Override
+    public void updateData(UpdateModel model) {
 
     }
 }

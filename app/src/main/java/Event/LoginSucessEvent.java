@@ -8,10 +8,5 @@ import model.UserModel;
 
 public class LoginSucessEvent {
 
-    public UserModel model;
 
-    public LoginSucessEvent(UserModel model) {
-        this.model = model;
-
-    }
 }

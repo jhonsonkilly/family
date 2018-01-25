@@ -73,42 +73,43 @@ public class RegistView extends FrameLayout implements View.OnClickListener {
 
         switch (view.getId()) {
             case R.id.vertify_button:
-                if (vertify(false)) {
-
-                    RegistActivity act=(RegistActivity) context;
-                    act.getPresenter().getVertifyCode(editText_phone.getText().toString());
 
 
-                }
+                RegistActivity act = (RegistActivity) context;
+                act.getPresenter().getVertifyCode(editText_phone.getText().toString());
+
+                break;
+
 
             case R.id.confirm_regist:
-                if(vertify(true)){
-                    RegistActivity act=(RegistActivity) context;
-                    act.getPresenter().confirmRegist(vertify_code.getText().toString(),
+                if (vertify()) {
+                    RegistActivity act1 = (RegistActivity) context;
+                    act1.getPresenter().confirmRegist(vertify_code.getText().toString(),
                             set_password.getText().toString(),
                             cofirmPassword.getText().toString(),
                             editText_phone.getText().toString());
                 }
 
+
                 break;
         }
     }
 
-    public boolean vertify(boolean isNeedVertify) {
+    public boolean vertify() {
+
         if (TextUtils.isEmpty(editText_phone.getText().toString())) {
             Toast.makeText(context, "手机号不为空", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(isNeedVertify){
-            if(TextUtils.isEmpty(vertify_code.getText().toString())){
-                Toast.makeText(context, "验证码不为空", Toast.LENGTH_SHORT).show();
-                return false;
-            }
+
+        if (TextUtils.isEmpty(vertify_code.getText().toString())) {
+            Toast.makeText(context, "验证码不为空", Toast.LENGTH_SHORT).show();
+            return false;
         }
+
 
         return true;
     }
-
 
 
     public void startCountDown() {

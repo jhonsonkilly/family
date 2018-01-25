@@ -68,18 +68,15 @@ public class ForgetPassWordView extends FrameLayout implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.vertify_button:
-                if (vertify(false)) {
 
-                    ForgetPassWordActivity act = (ForgetPassWordActivity) context;
-                    act.getPresenter().getVertifyCode(editText_phone.getText().toString());
-
-
-                }
+                ForgetPassWordActivity act = (ForgetPassWordActivity) context;
+                act.getPresenter().getVertifyCode(editText_phone.getText().toString());
+                break;
 
             case R.id.confirm_regist:
-                if (vertify(true)) {
-                    ForgetPassWordActivity act = (ForgetPassWordActivity) context;
-                    act.getPresenter().confirmPassword(vertify_code.getText().toString(),
+                if (vertify()) {
+                    ForgetPassWordActivity act1 = (ForgetPassWordActivity) context;
+                    act1.getPresenter().confirmPassword(vertify_code.getText().toString(),
                             set_password.getText().toString(),
                             editText_phone.getText().toString());
                 }
@@ -88,21 +85,21 @@ public class ForgetPassWordView extends FrameLayout implements View.OnClickListe
         }
     }
 
-    public boolean vertify(boolean isNeedVertify) {
+    public boolean vertify() {
         if (TextUtils.isEmpty(editText_phone.getText().toString())) {
             Toast.makeText(context, "手机号不为空", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (isNeedVertify) {
-            if (TextUtils.isEmpty(vertify_code.getText().toString())) {
-                Toast.makeText(context, "验证码不为空", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            if (!set_password.getText().toString().equals(cofirmPassword.getText().toString())) {
-                Toast.makeText(context, "请输入相同的密码", Toast.LENGTH_SHORT).show();
-                return false;
-            }
+
+        if (TextUtils.isEmpty(vertify_code.getText().toString())) {
+            Toast.makeText(context, "验证码不为空", Toast.LENGTH_SHORT).show();
+            return false;
         }
+        if (!set_password.getText().toString().equals(cofirmPassword.getText().toString())) {
+            Toast.makeText(context, "请输入相同的密码", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
 
         return true;
     }

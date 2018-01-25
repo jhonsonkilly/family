@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.androidyuan.frame.base.activity.WineApplication;
 import com.androidyuan.frame.cores.utils.SharedPreferencesUtil;
 
+import model.UpdateModel;
 import model.UserModel;
 
 
@@ -48,6 +49,14 @@ public class LoginHelper {
             Toast.makeText(WineApplication.gainContext(), "token存入失败", Toast.LENGTH_LONG).show();
         }
 
+
+    }
+
+    public static void updateMes(UpdateModel model){
+        if(model!=null){
+            SharedPreferencesUtil.saveStringData(WineApplication.gainContext(), "cover", model.cover);
+            SharedPreferencesUtil.saveStringData(WineApplication.gainContext(), "score", model.score);
+        }
 
     }
 

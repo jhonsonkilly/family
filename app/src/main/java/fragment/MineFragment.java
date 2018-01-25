@@ -13,6 +13,7 @@ import activity.RegistActivity;
 import config.LoginHelper;
 import family.live.R;
 import iview.ILoginView;
+import model.UpdateModel;
 import model.UserModel;
 import otto.OttoBus;
 import otto.Subscribe;
@@ -62,6 +63,12 @@ public class MineFragment extends BaseCommFragment<MinePresenter> implements ILo
     public void onResume() {
         super.onResume();
         getLoginState();
+        if (View.VISIBLE ==mineView.getVisibility() ) {
+
+            presenter.updateData();
+        }
+
+
     }
 
     @Override
@@ -84,7 +91,6 @@ public class MineFragment extends BaseCommFragment<MinePresenter> implements ILo
     }
 
 
-
     @Subscribe
     public void loginSucess(LoginSucessEvent event) {
 
@@ -93,7 +99,7 @@ public class MineFragment extends BaseCommFragment<MinePresenter> implements ILo
     }
 
     @Subscribe
-    public void RegistSucess(RegistSucessEvent event){
+    public void RegistSucess(RegistSucessEvent event) {
 
         getLoginState();
     }
@@ -104,7 +110,7 @@ public class MineFragment extends BaseCommFragment<MinePresenter> implements ILo
 
         LoginHelper.setLoginMes(model);
 
-        OttoBus.getInstance().post(new LoginSucessEvent(model));
+        OttoBus.getInstance().post(new LoginSucessEvent());
 
     }
 
@@ -118,12 +124,20 @@ public class MineFragment extends BaseCommFragment<MinePresenter> implements ILo
 
     }
 
+    @Override
+    public void updateData(UpdateModel model) {
+
+        LoginHelper.updateMes(model);
+        OttoBus.getInstance().post(new LoginSucessEvent());
+    }
+
     public void getLoginState() {
 
         if (LoginHelper.isLogin()) {
 
             loginView.setVisibility(View.GONE);
             mineView.setVisibility(View.VISIBLE);
+
         } else {
             loginView.setVisibility(View.VISIBLE);
             mineView.setVisibility(View.GONE);

@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import Event.GongJiangFrgAttachEvent;
 import Event.JianCaiFrgAttachEvent;
 import Event.LocationEvent;
 import Event.QiangDanFrgAttachEvent;
@@ -222,6 +223,12 @@ public class MainTabsActivity extends BaseCommActivity<MainTabsPresenter> {
 
     @Subscribe
     public void getQiangDanFrg(QiangDanFrgAttachEvent event) {
+
+        OttoBus.getInstance().post(new LocationEvent(location));
+    }
+
+    @Subscribe
+    public void getGongJiangFrg(GongJiangFrgAttachEvent event) {
 
         OttoBus.getInstance().post(new LocationEvent(location));
     }
