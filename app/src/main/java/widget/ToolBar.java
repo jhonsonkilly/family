@@ -33,6 +33,7 @@ public class ToolBar extends FrameLayout implements View.OnClickListener {
     private ImageView locImg;
     private LinearLayout ll_search;
     private ImageView search;
+    private ImageView add;
 
 
     public ToolBar(@NonNull Context context) {
@@ -62,6 +63,8 @@ public class ToolBar extends FrameLayout implements View.OnClickListener {
         ll_search = view.findViewById(R.id.search_ll);
         ll_search.setOnClickListener(this);
         search = view.findViewById(R.id.search);
+        add=view.findViewById(R.id.add);
+        add.setOnClickListener(this);
         addView(view);
     }
 
@@ -85,6 +88,10 @@ public class ToolBar extends FrameLayout implements View.OnClickListener {
     public ImageView showLacIcon() {
         locImg.setVisibility(VISIBLE);
         return locImg;
+    }
+    public ImageView showAddIcon() {
+        add.setVisibility(VISIBLE);
+        return add;
     }
 
     public LinearLayout showSarch() {

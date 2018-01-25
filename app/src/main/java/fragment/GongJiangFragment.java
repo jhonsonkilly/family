@@ -1,13 +1,18 @@
 package fragment;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
 import com.androidyuan.frame.base.fragment.BaseCommFragment;
 
+import activity.LoginActivity;
+import activity.WebActivity;
 import adapter.GongJiangFragmentAdapter;
 import adapter.QiangDanFragmentAdapter;
+import config.LoginHelper;
+import config.ParamsConfig;
 import family.live.R;
 import presenter.GongJiangPresenter;
 import widget.ToolBar;
@@ -32,14 +37,14 @@ public class GongJiangFragment extends BaseCommFragment<GongJiangPresenter> {
     @Override
     protected void initAllWidget(View view) {
 
-        ToolBar toolbar=view.findViewById(R.id.tool_bar);
-        toolbar.setTitle("抢单中心");
+
         title1 = view.findViewById(R.id.title_1);
         title1.setOnClickListener(this);
         title2 = view.findViewById(R.id.title_2);
         title2.setOnClickListener(this);
         title3 = view.findViewById(R.id.title_3);
         title3.setOnClickListener(this);
+        view.findViewById(R.id.add).setOnClickListener(this);
 
         viewPager = view.findViewById(R.id.view_page);
         viewPager.setOffscreenPageLimit(4);
@@ -58,7 +63,7 @@ public class GongJiangFragment extends BaseCommFragment<GongJiangPresenter> {
                     setSelector(true, false, false);
                 } else if (position == 1) {
                     setSelector(false, true, false);
-                }else{
+                } else {
                     setSelector(false, false, true);
                 }
 
@@ -76,16 +81,25 @@ public class GongJiangFragment extends BaseCommFragment<GongJiangPresenter> {
     protected void clickView(View v) {
         switch (v.getId()) {
             case R.id.title_1:
-                viewPager.setCurrentItem(0,false);
+                viewPager.setCurrentItem(0, false);
                 setSelector(true, false, false);
                 break;
             case R.id.title_2:
-                viewPager.setCurrentItem(1,false);
+                viewPager.setCurrentItem(1, false);
                 setSelector(false, true, false);
                 break;
             case R.id.title_3:
-                viewPager.setCurrentItem(2,false);
+                viewPager.setCurrentItem(2, false);
                 setSelector(false, false, true);
+                break;
+            case R.id.add:
+                if (LoginHelper.isLogin()) {
+                    Intent intent = new Intent(getContext(), WebActivity.class);
+                    intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/cases/create");
+                    getContext().startActivity(intent);
+                } else {
+                    to(LoginActivity.class);
+                }
                 break;
         }
     }

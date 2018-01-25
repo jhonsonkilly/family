@@ -6,7 +6,7 @@
     android:background="@color/white">
 
     <Button
-
+        android:textColor="@color/white"
         android:id="@+id/button_gongjiang"
         android:layout_width="match_parent"
         android:layout_height="40dp"

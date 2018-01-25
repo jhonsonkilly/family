@@ -57,7 +57,7 @@ public class GongJiangFragmentItem extends BaseCommFragment<GongJiangItemPresent
     protected int getLayoutId() {
         Bundle bundle = getArguments();
         if (bundle != null) {
-            position = bundle.getInt(ParamsConfig.QIANGDAN_POS);
+            position = bundle.getInt(ParamsConfig.GONGJING_POS);
 
             OttoBus.getInstance().register(this);
             OttoBus.getInstance().post(new GongJiangFrgAttachEvent());
