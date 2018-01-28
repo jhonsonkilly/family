@@ -1,10 +1,12 @@
 package adapter;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidyuan.frame.cores.utils.image.FrescoUtils;
@@ -46,6 +48,8 @@ public class JianCaiHorListAdapter extends RecyclerView.Adapter<JianCaiHorListAd
         try {
             holder.hor_text.setText(datalist.get(position).name);
             FrescoUtils.displayUrl(holder.hor_img, datalist.get(position).cover);
+
+
             holder.hor_img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

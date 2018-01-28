@@ -45,4 +45,8 @@
 
 
     <drawable name="select_color_orange">#ff6900</drawable>
+
+
+    <color name="ic_default_bg_color">#33000000</color>
+    <color name="ic_default_placeholder">#F7F7F7</color>
 </resources>

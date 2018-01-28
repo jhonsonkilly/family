@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 
 import Event.QuitLoginEvent;
 import activity.LoginActivity;
+import activity.ShareActivity;
 import activity.WebActivity;
 import config.LoginHelper;
 import config.ParamsConfig;
@@ -118,9 +119,10 @@ public class UserView extends FrameLayout implements View.OnClickListener {
                 break;
             case R.id.share:
 
-                Intent intent9 = new Intent(getContext(), WebActivity.class);
+                /*Intent intent9 = new Intent(getContext(), WebActivity.class);
                 intent9.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/account/share");
-                context.startActivity(intent9);
+                context.startActivity(intent9);*/
+                context.startActivity(new Intent(context, ShareActivity.class));
 
                 break;
             case R.id.quit_login:

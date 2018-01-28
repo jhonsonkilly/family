@@ -55,6 +55,8 @@ public class GongJiangAdapter extends PullRefreshAdapter<GongJiangModel.Items, G
         liveFragholder.text_juli = BaseViewHolder.get(convertView, R.id.text_juli);
         liveFragholder.pinglun_ll = BaseViewHolder.get(convertView, R.id.pinglun_ll);
         liveFragholder.fixChildHeightGridView = BaseViewHolder.get(convertView, R.id.gridview);
+        liveFragholder.fixChildHeightGridView.setFocusableInTouchMode(false);
+        liveFragholder.fixChildHeightGridView.requestFocus();
 
         return liveFragholder;
     }
@@ -92,7 +94,7 @@ public class GongJiangAdapter extends PullRefreshAdapter<GongJiangModel.Items, G
             }
         });
 
-        GongJiangItemAdapter adapter = new GongJiangItemAdapter(context, item.images);
+        GongJiangItemAdapter adapter = new GongJiangItemAdapter(context, item.images,holder.fixChildHeightGridView);
         holder.fixChildHeightGridView.setAdapter(adapter);
 
 

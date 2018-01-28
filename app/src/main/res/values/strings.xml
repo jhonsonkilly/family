@@ -14,4 +14,6 @@
 
     <string name="get_app_version_fail_">获取应用程序版本失败，原因：</string>
     <string name="get_system_core_fail_">获取系统内核版本失败，原因：</string>
+
+    <string name="select">%1$s/%2$s</string>
 </resources>

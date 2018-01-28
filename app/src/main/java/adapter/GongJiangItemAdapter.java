@@ -1,8 +1,11 @@
 package adapter;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +14,17 @@ import android.widget.TextView;
 
 import com.androidyuan.frame.cores.utils.SharedPreferencesUtil;
 import com.androidyuan.frame.cores.utils.image.FrescoUtils;
+import com.androidyuan.frame.cores.widget.FixChildHeightGridView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 
+import activity.ImagePreviewActivity;
 import family.live.R;
 
 
@@ -34,9 +41,12 @@ public class GongJiangItemAdapter extends BaseAdapter {
 
     TextView textView;
 
-    public GongJiangItemAdapter(Context context, List<String> list) {
+    FixChildHeightGridView fixChildHeightGridView;
+
+    public GongJiangItemAdapter(Context context, List<String> list, FixChildHeightGridView fixChildHeightGridView) {
         this.list = list;
         this.context = context;
+        this.fixChildHeightGridView = fixChildHeightGridView;
 
     }
 
@@ -72,6 +82,21 @@ public class GongJiangItemAdapter extends BaseAdapter {
 
             FrescoUtils.displayUrl(img, list.get(position));
 
+            img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, ImagePreviewActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(ImagePreviewActivity.IMAGE_INFO, (Serializable) list);
+                    bundle.putSerializable(ImagePreviewActivity.IMAGE_RECT, (Serializable) getImageViewsDrawableRects(fixChildHeightGridView));
+                    bundle.putInt(ImagePreviewActivity.CURRENT_ITEM, position);
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                    // 禁用动画
+                    ((Activity) context).overridePendingTransition(0, 0);
+                }
+            });
+
 
             return convertView;
 
@@ -80,5 +105,36 @@ public class GongJiangItemAdapter extends BaseAdapter {
         }
 
 
+    }
+    public List<Rect> getImageViewsDrawableRects(ViewGroup viewGroup) {
+        int childCount = viewGroup.getChildCount();
+        if (childCount <= 0) {
+            return null;
+        } else {
+            LinkedList<Rect> viewRects = new LinkedList<>();
+
+            for (int i = 0; i < childCount; ++i) {
+                View v = viewGroup.getChildAt(i);
+                if (v != null) {
+                    Rect rect = this.getDrawableBoundsInView((ViewGroup) v);
+                    viewRects.add(rect);
+                }
+            }
+
+            return viewRects;
+        }
+    }
+
+    private Rect getDrawableBoundsInView(ViewGroup iv) {
+        if (iv != null) {
+
+            Rect result = new Rect();
+            iv.getGlobalVisibleRect(result);
+
+
+            return result;
+        } else {
+            return null;
+        }
     }
 }

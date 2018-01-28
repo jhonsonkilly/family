@@ -65,4 +65,5 @@ dependencies {
     compile project(':frame')
     compile files('libs/alipaySdk-20170922.jar')
     compile files('libs/AMap_Location_V3.7.0_20171218.jar')
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }
