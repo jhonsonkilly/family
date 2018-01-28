@@ -124,7 +124,7 @@ public class UrlConfig {
     public static String sendGetPasswordSmsUrl(String phone) {
         StringBuilder sb = new StringBuilder(buildAllParams());
         sb.append("&phone=" + phone);
-        String uriString = getInterfaceConfigureUrl() + "/api/send_reg_code" + sb.toString();
+        String uriString = getInterfaceConfigureUrl() + "/api/send_pwd_code" + sb.toString();
         return uriString;
     }
 
