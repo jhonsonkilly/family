@@ -56,11 +56,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="activity.MainTabsActivity"
+            android:name="activity.SplashActivity"
             android:windowSoftInputMode="adjustPan">
 
 
@@ -85,6 +85,16 @@
             android:screenOrientation="portrait">
 
         </activity>
+
+        <activity
+            android:name="activity.MainTabsActivity"
+
+            android:screenOrientation="portrait">
+
+        </activity>
+
+
+
         <activity
             android:name="activity.ShareActivity"
 
