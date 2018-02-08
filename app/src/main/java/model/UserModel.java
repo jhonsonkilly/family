@@ -83,8 +83,8 @@ public class UserModel {
         this.score = score;
     }
 
-    public String getUid() {
-        return uid;
+    public static String getUid() {
+        return SharedPreferencesUtil.getStringData(WineApplication.gainContext(), "uid", "");
     }
 
     public void setUid(String uid) {

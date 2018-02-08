@@ -68,7 +68,8 @@ public class LocationManager {
         rxPermissions.request(
                 //mTODO:meiyizhi 定位需要的权限
                 Manifest.permission.ACCESS_FINE_LOCATION,//位置
-                Manifest.permission.ACCESS_COARSE_LOCATION)
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        )
                 .subscribe(new Action1<Boolean>() {
                     @Override
                     public void call(Boolean granted) {
@@ -79,7 +80,7 @@ public class LocationManager {
                             mLocationClient.startLocation();
                         } else {
 
-                            Toast.makeText(activity, "为了更好的使用体验，请开启定位权限!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(activity, "为了更好的使用体验，请开启权限!", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

@@ -43,6 +43,7 @@ public class LoginHelper {
             SharedPreferencesUtil.saveStringData(WineApplication.gainContext(), "phone", mes.phone);
             SharedPreferencesUtil.saveStringData(WineApplication.gainContext(), "cover", mes.cover);
             SharedPreferencesUtil.saveStringData(WineApplication.gainContext(), "score", mes.score);
+            SharedPreferencesUtil.saveStringData(WineApplication.gainContext(), "uid", mes.uid);
 
         } else {
 
