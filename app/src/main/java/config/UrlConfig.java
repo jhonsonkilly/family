@@ -1,6 +1,6 @@
 package config;
 
-import com.androidyuan.frame.base.activity.WineApplication;
+import activity.WineApplication;
 
 import utils.Md5Utils;
 

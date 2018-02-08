@@ -1,6 +1,6 @@
 package utils;
 
-import com.androidyuan.frame.base.activity.WineApplication;
+import activity.WineApplication;
 
 /**
  * Created by mac on 2017/10/29.

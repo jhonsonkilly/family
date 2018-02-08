@@ -16,7 +16,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
-import com.androidyuan.frame.base.activity.WineApplication;
+import activity.WineApplication;
 
 import java.io.BufferedReader;
 import java.io.File;

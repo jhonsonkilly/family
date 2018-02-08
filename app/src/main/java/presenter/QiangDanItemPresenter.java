@@ -2,20 +2,15 @@ package presenter;
 
 import android.os.Bundle;
 import android.os.Message;
-import android.widget.Toast;
 
-import com.androidyuan.frame.base.activity.WineApplication;
 import com.androidyuan.frame.base.presenter.BaseCommPresenter;
-import com.androidyuan.frame.base.protocal.http.HttpTool;
 
 import config.ParamsConfig;
 import iview.IQiangDanView;
-import msg.LoginResMsg;
 import msg.QiangDanReqMsg;
 import msg.QiangDanResMsg;
 import msg.QiangDanYuYueReqMsg;
 import msg.QiangDanYuYueResMsg;
-import msg.QuitLoginResMsg;
 
 /**
  * Created by mac on 18/1/22.

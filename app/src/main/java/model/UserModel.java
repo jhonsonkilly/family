@@ -1,9 +1,7 @@
 package model;
 
-import com.androidyuan.frame.base.activity.WineApplication;
+import activity.WineApplication;
 import com.androidyuan.frame.cores.utils.SharedPreferencesUtil;
-
-import config.LoginHelper;
 
 /**
  * Created by mac on 18/1/13.

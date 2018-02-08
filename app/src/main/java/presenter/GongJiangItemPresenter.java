@@ -4,20 +4,15 @@ import android.os.Bundle;
 import android.os.Message;
 import android.widget.Toast;
 
-import com.androidyuan.frame.base.activity.WineApplication;
+import activity.WineApplication;
 import com.androidyuan.frame.base.presenter.BaseCommPresenter;
 
 import config.ParamsConfig;
 import iview.IGongJiangView;
-import model.GongJiangZanModel;
 import msg.GongJiangReqMsg;
 import msg.GongJiangResMsg;
 import msg.GongJiangZanReqMsg;
 import msg.GongJiangZanResMsg;
-import msg.QiangDanReqMsg;
-import msg.QiangDanResMsg;
-import msg.QiangDanYuYueReqMsg;
-import msg.QiangDanYuYueResMsg;
 
 /**
  * Created by mac on 18/1/19.

@@ -3,23 +3,19 @@ package fragment;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidyuan.frame.base.activity.WineApplication;
+import activity.WineApplication;
 import com.androidyuan.frame.base.fragment.BaseCommFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import Event.JianCaiFrgAttachEvent;
 import Event.LocationEvent;
-import Event.QiangDanClickEvent;
 import Event.QiangDanFrgAttachEvent;
 import activity.LoginActivity;
 import adapter.QiangDanAdapter;

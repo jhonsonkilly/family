@@ -4,9 +4,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Keep;
 
-import com.androidyuan.frame.base.activity.WineApplication;
+
 import com.androidyuan.frame.cores.log.CommonLogger;
-import com.androidyuan.frame.cores.utils.SharedPreferencesUtil;
 
 import java.io.File;
 import java.io.IOException;

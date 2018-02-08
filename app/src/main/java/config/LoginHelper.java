@@ -3,7 +3,7 @@ package config;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.androidyuan.frame.base.activity.WineApplication;
+import activity.WineApplication;
 import com.androidyuan.frame.cores.utils.SharedPreferencesUtil;
 
 import model.UpdateModel;

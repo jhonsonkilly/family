@@ -1,10 +1,12 @@
 package com.androidyuan.frame.base.protocal.http;
 
+import android.app.Application;
 import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
-import com.androidyuan.frame.base.activity.WineApplication;
+
+import com.androidyuan.frame.base.activity.BaseApplication;
 import com.androidyuan.frame.cores.log.CommonLogger;
 import com.androidyuan.frame.cores.utils.FastJSONHelper;
 
@@ -112,11 +114,11 @@ public abstract class LiveResponseMsg<T> extends ResponseMsg {
 
             if (!isSuc) {
 
-                Toast.makeText(WineApplication.gainContext(), getMsg(), Toast.LENGTH_LONG).show();
+                Toast.makeText(BaseApplication.gainContext(), getMsg(), Toast.LENGTH_LONG).show();
             }
             return isSuc;
         } else {
-            Toast.makeText(WineApplication.gainContext(), "未知错误", Toast.LENGTH_LONG).show();
+            Toast.makeText(BaseApplication.gainContext(), "未知错误", Toast.LENGTH_LONG).show();
             return false;
         }
 

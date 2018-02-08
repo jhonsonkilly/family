@@ -1,16 +1,9 @@
 package fragment;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.androidyuan.frame.base.activity.WineApplication;
 import com.androidyuan.frame.base.fragment.BaseCommFragment;
 
 import java.util.ArrayList;
@@ -18,23 +11,16 @@ import java.util.List;
 
 import Event.GongJiangFrgAttachEvent;
 import Event.LocationEvent;
-import Event.QiangDanFrgAttachEvent;
 import activity.LoginActivity;
 import adapter.GongJiangAdapter;
-import adapter.GongJiangFragmentAdapter;
-import adapter.QiangDanAdapter;
 import config.LoginHelper;
 import config.ParamsConfig;
 import family.live.R;
 import iview.IGongJiangView;
-import iview.IQiangDanView;
 import model.GongJiangModel;
-import model.GongJiangZanModel;
-import model.QiangDanModel;
 import otto.OttoBus;
 import otto.Subscribe;
 import presenter.GongJiangItemPresenter;
-import presenter.QiangDanItemPresenter;
 import widget.PullLoadMoreListener;
 import widget.refreshlist.NewPullLoadMoreRecycleView;
 
