@@ -13,7 +13,7 @@ import com.umeng.socialize.UMShareAPI;
  * Created by mac on 2017/10/16.
  */
 
-public class WineApplication extends BaseApplication {
+public class WineApplication extends SampleApplication {
 
 
 

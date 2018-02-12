@@ -19,6 +19,10 @@ buildscript {
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
+
+
+        classpath ("com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:${TINKERPATCH_VERSION}") { changing = true }
+
     }
 
 }

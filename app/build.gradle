@@ -28,6 +28,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [APP_CHANNEL: "wandoujia"]
     }
 
 
@@ -46,6 +48,13 @@ android {
 
     android {
         useLibrary 'org.apache.http.legacy'
+    }
+
+    productFlavors {
+        wandoujia {}
+        _360 {}
+        baidu {}
+        xiaomi {}
     }
 
 
@@ -69,4 +78,16 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile files('libs/SharePlugin.jar')
     compile files('libs/SocialSDK_WeiXin_Full.jar')
+
+    provided("com.tinkerpatch.tinker:tinker-android-anno:1.9.2")
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.2")
+    compile "com.android.support:multidex:1.0.1"
+    //无需引入tinker的任何库,使用tinkerpatch sdk即可
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") { changing = true }
+}
+
+apply from: 'tinkerpatch.gradle'
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
