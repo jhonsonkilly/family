@@ -31,7 +31,7 @@ public class WebActivity extends BaseCommActivity<WebPresenter> {
     @Override
     protected void initAllWidget() {
         url = getIntent().getStringExtra(ParamsConfig.LOADURL);
-        webView = findViewById(R.id.webView);
+        webView = (H5InputWebView)findViewById(R.id.webView);
         webView.loadUrl(url);
     }
 

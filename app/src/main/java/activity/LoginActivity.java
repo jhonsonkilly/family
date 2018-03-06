@@ -32,7 +32,7 @@ public class LoginActivity extends BaseCommActivity<MinePresenter> implements IL
 
     @Override
     protected void initAllWidget() {
-        loginView = findViewById(R.id.login);
+        loginView = (LoginView)findViewById(R.id.login);
         loginView.showBack();
         OttoBus.getInstance().register(this);
     }

@@ -26,7 +26,7 @@ public class RegistActivity extends BaseCommActivity<ReigstPresenter> implements
 
     @Override
     protected void initAllWidget() {
-        registView = findViewById(R.id.regist);
+        registView = (RegistView)findViewById(R.id.regist);
         OttoBus.getInstance().register(this);
     }
 

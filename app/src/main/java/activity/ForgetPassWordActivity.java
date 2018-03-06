@@ -24,7 +24,7 @@ public class ForgetPassWordActivity extends BaseCommActivity<ForgetPassWordPrese
 
     @Override
     protected void initAllWidget() {
-        view = findViewById(R.id.view);
+        view = (ForgetPassWordView)findViewById(R.id.view);
     }
 
     @Override

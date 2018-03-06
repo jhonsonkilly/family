@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+apply from: 'tinkerpatch.gradle'
+
+apply plugin: 'walle'
+
 android {
 
     signingConfigs {
@@ -29,13 +33,12 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders = [APP_CHANNEL: "wandoujia"]
     }
 
 
     buildTypes {
         release {
-            signingConfig  signingConfigs.release
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -50,14 +53,16 @@ android {
         useLibrary 'org.apache.http.legacy'
     }
 
-    productFlavors {
-        wandoujia {}
-        _360 {}
-        baidu {}
+    /*productFlavors {
+        yingyongbao {}
         xiaomi {}
+        huawei {}
+
     }
 
-
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [APP_CHANNEL_VALUE:name]
+    }*/
 
 
 }
@@ -76,17 +81,29 @@ dependencies {
     compile files('libs/alipaySdk-20170922.jar')
     compile files('libs/AMap_Location_V3.7.0_20171218.jar')
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile files('libs/SharePlugin.jar')
     compile files('libs/SocialSDK_WeiXin_Full.jar')
 
     provided("com.tinkerpatch.tinker:tinker-android-anno:1.9.2")
     compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.2")
     compile "com.android.support:multidex:1.0.1"
     //无需引入tinker的任何库,使用tinkerpatch sdk即可
-    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") { changing = true }
+    compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") {
+        changing = true
+    }
+
+    compile 'com.meituan.android.walle:library:1.1.4'
 }
 
-apply from: 'tinkerpatch.gradle'
+walle {
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
+    // 渠道配置文件
+    channelFile = new File("${project.getProjectDir()}/channel")
+}
+
+
 
 configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'

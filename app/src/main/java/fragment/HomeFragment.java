@@ -17,9 +17,13 @@ import com.androidyuan.frame.base.fragment.BaseCommFragment;
 import com.androidyuan.frame.cores.banner.BannerBaseAdapter;
 import com.androidyuan.frame.cores.banner.BannerView;
 import com.androidyuan.frame.cores.utils.SharedPreferencesUtil;
+import com.meituan.android.walle.WalleChannelReader;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import Event.LocationEvent;
 import activity.LoginActivity;
@@ -28,6 +32,7 @@ import activity.WebActivity;
 import adapter.HorListAdapter;
 import config.LoginHelper;
 import config.ParamsConfig;
+import family.live.BuildConfig;
 import family.live.R;
 import iview.IHomeView;
 import model.HomePageModel;
@@ -61,14 +66,30 @@ public class HomeFragment extends BaseCommFragment<HomePresenter> implements IHo
 
     @Override
     protected void initAllWidget(View view) {
+
+        ArrayList<Integer> ll = new ArrayList<>();
+        for (int i = 0; i < 10; i++)
+            ll.add(i);
+
+        Iterator<Integer> ii = ll.iterator();
+        while (ii.hasNext())
+            System.out.println(ii.next());
+
+
         toolBar = view.findViewById(R.id.tool_bar);
         toolBar.setTitle("都市民工");
         toolBar.showRightIcon().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), WebActivity.class);
+
+                /*Intent intent = new Intent(getContext(), WebActivity.class);
                 intent.putExtra(ParamsConfig.LOADURL, "http://tz.tensdo.com/renovation");
-                getActivity().startActivity(intent);
+                getActivity().startActivity(intent);*/
+                //Toast.makeText(getContext(), BuildConfig.FLAVOR+"", Toast.LENGTH_LONG).show();
+
+                String channel = WalleChannelReader.getChannel(getContext());
+
+                Toast.makeText(getContext(), channel+"", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -80,8 +101,8 @@ public class HomeFragment extends BaseCommFragment<HomePresenter> implements IHo
                     public void onLocationChanged(LocationManager.MapLocation location) {
                         if (location != null) {
 
-                            Toast.makeText(getContext(), location.address, Toast.LENGTH_LONG).show();
-
+                            //Toast.makeText(getContext(), location.address, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), BuildConfig.FLAVOR+"", Toast.LENGTH_LONG).show();
 
                         }
                     }

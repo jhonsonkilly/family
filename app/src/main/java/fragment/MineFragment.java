@@ -142,5 +142,23 @@ public class MineFragment extends BaseCommFragment<MinePresenter> implements ILo
             loginView.setVisibility(View.VISIBLE);
             mineView.setVisibility(View.GONE);
         }
+
+        NameRepository namesRepository = new NameRepository();
+
+        for(Iterator iter = namesRepository.getIterator(); iter.hasNext();){
+            String name = (String)iter.next();
+            System.out.println("Name : " + name);
+        }
+        while (namesRepository.getIterator().hasNext()){
+            namesRepository.getIterator().next();
+        }
     }
+
+
+    public interface Iterator {
+        public boolean hasNext();
+        public Object next();
+    }
+
+
 }

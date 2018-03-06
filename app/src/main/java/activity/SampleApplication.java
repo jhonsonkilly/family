@@ -136,7 +136,6 @@ public class SampleApplication extends BaseApplication {
             //设置当前渠道号,对于某些渠道我们可能会想屏蔽补丁功能
             //设置渠道后,我们就可以使用后台的条件控制渠道更新
             //屏蔽部分渠道的补丁功能
-            .addIgnoreAppChannel("googleplay")
             //设置tinkerpatch平台的条件下发参数
             //设置补丁合成成功后,锁屏重启程序
             //默认是等应用自然重启
